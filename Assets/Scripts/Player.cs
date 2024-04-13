@@ -6,10 +6,12 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     private InputSystem inputSystem = null;
+    private Rigidbody2D rb = null;
 
     private void Awake()
     {
-        inputSystem = new InputSystem();    
+        inputSystem = new InputSystem();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnEnable()
@@ -28,6 +30,10 @@ public class Player : MonoBehaviour
     {
         //Debug.Log("Movement Performed");
         Debug.Log(value.ReadValue<Vector2>());
+        Vector2 vector = value.ReadValue<Vector2>();
+        float speed = 100.0f;
+        Vector2 direction = new Vector2(vector.x * speed * Time.deltaTime, vector.y * speed * Time.deltaTime);
+        rb.AddForce(direction, ForceMode2D.Impulse);
     }
 
     // Start is called before the first frame update
