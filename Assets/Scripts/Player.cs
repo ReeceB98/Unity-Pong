@@ -6,35 +6,43 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     private InputSystem inputSystem = null;
-    private Rigidbody2D rb = null;
+    [SerializeField] private Rigidbody2D rb = null;
     private Vector2 direction = Vector2.zero;
     [SerializeField] private float speed = 0.0f;
+    [SerializeField] private float yBarriers = 0.0f;
+    private float xPos = 0.0f;
 
     private void Awake()
     {
         inputSystem = new InputSystem();
         rb = GetComponent<Rigidbody2D>();
         speed = 300.0f;
+        yBarriers = 3.5f;
+        xPos = 7.0f;
     }
 
     private void OnEnable()
     {
         inputSystem.Enable();
-        inputSystem.Player.Movement.performed += MovementPerformed;
-        inputSystem.Player.Movement.canceled += MovementCancelled;
+        inputSystem.Player1.Movement.performed += MovementPerformed;
+        inputSystem.Player1.Movement.canceled += MovementCancelled;
+        inputSystem.Player2.Movement.performed += MovementPerformed;
+        inputSystem.Player2.Movement.canceled += MovementCancelled;
     }
 
     private void OnDisable()
     {
         inputSystem.Disable();
-        inputSystem.Player.Movement.performed -= MovementPerformed;
-        inputSystem.Player.Movement.canceled -= MovementCancelled;
+        inputSystem.Player1.Movement.performed -= MovementPerformed;
+        inputSystem.Player1.Movement.canceled -= MovementCancelled;
+        inputSystem.Player2.Movement.performed -= MovementPerformed;
+        inputSystem.Player2.Movement.canceled -= MovementCancelled;
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = speed * Time.deltaTime * direction;
-        Debug.Log($"Velocity: {rb.velocity}");
+        PlayerMovement();
+        SetPlayer1Barriers();
     }
 
     private void MovementPerformed(InputAction.CallbackContext value)
@@ -47,15 +55,25 @@ public class Player : MonoBehaviour
         direction = Vector2.zero;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void PlayerMovement()
     {
-        
+        rb.velocity = speed * Time.deltaTime * direction;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SetPlayer1Barriers()
     {
-        
+        // Stops player 1 paddle going out of the top of level
+        if (transform.position.y > yBarriers)
+        {
+            direction = Vector2.zero;
+            transform.position = new Vector2(-xPos, yBarriers);
+        }
+
+        // Stops player 1 going out of the bottom of the level
+        if (transform.position.y < -yBarriers)
+        {
+            direction = Vector2.zero;
+            transform.position = new Vector2(-xPos, -yBarriers);
+        }
     }
 }

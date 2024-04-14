@@ -2,27 +2,9 @@
     "name": "InputSystem",
     "maps": [
         {
-            "name": "Player",
+            "name": "Player1",
             "id": "aed8da6a-9436-4b98-93db-e1cdb5cb6fc6",
             "actions": [
-                {
-                    "name": "MoveUp",
-                    "type": "Button",
-                    "id": "3b45d494-bbe7-405d-984a-9209df621cde",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MoveDown",
-                    "type": "Button",
-                    "id": "f77c754f-7653-43c2-9320-a233bd2a3867",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
                 {
                     "name": "Movement",
                     "type": "Value",
@@ -34,28 +16,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "dc338002-23ec-4239-b19b-a92a8502be8e",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "11d71840-45d9-4c13-b98a-5bb5b4146643",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "2D Vector",
                     "id": "cfa07d48-99ee-4394-8454-587d28fd3633",
@@ -82,6 +42,56 @@
                     "name": "down",
                     "id": "996c1aff-6944-4056-9596-3c5ba8adacee",
                     "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Player2",
+            "id": "de095028-24eb-4b6b-91fc-726997894058",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Value",
+                    "id": "e58f3d01-8fbf-440b-9938-c008619fb4a2",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "2751d008-ca1e-44e5-a19b-316068726719",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "cae6b288-94d9-4b2e-b86b-3695771ca367",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "136ce2df-a05d-43a8-98a6-9713ec622837",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
