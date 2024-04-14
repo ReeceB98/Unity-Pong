@@ -7,33 +7,44 @@ public class Player : MonoBehaviour
 {
     private InputSystem inputSystem = null;
     private Rigidbody2D rb = null;
+    private Vector2 direction = Vector2.zero;
+    [SerializeField] private float speed = 0.0f;
 
     private void Awake()
     {
         inputSystem = new InputSystem();
         rb = GetComponent<Rigidbody2D>();
+        speed = 300.0f;
     }
 
     private void OnEnable()
     {
         inputSystem.Enable();
         inputSystem.Player.Movement.performed += MovementPerformed;
+        inputSystem.Player.Movement.canceled += MovementCancelled;
     }
 
     private void OnDisable()
     {
         inputSystem.Disable();
         inputSystem.Player.Movement.performed -= MovementPerformed;
+        inputSystem.Player.Movement.canceled -= MovementCancelled;
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = speed * Time.deltaTime * direction;
+        Debug.Log($"Velocity: {rb.velocity}");
     }
 
     private void MovementPerformed(InputAction.CallbackContext value)
     {
-        //Debug.Log("Movement Performed");
-        Debug.Log(value.ReadValue<Vector2>());
-        Vector2 vector = value.ReadValue<Vector2>();
-        float speed = 100.0f;
-        Vector2 direction = new Vector2(vector.x * speed * Time.deltaTime, vector.y * speed * Time.deltaTime);
-        rb.AddForce(direction, ForceMode2D.Impulse);
+        direction = value.ReadValue<Vector2>();
+    }
+
+    private void MovementCancelled(InputAction.CallbackContext value)
+    {
+        direction = Vector2.zero;
     }
 
     // Start is called before the first frame update
