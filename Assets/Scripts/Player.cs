@@ -26,8 +26,6 @@ public class Player : MonoBehaviour
         inputSystem.Enable();
         inputSystem.Player1.Movement.performed += MovementPerformed;
         inputSystem.Player1.Movement.canceled += MovementCancelled;
-        inputSystem.Player2.Movement.performed += MovementPerformed;
-        inputSystem.Player2.Movement.canceled += MovementCancelled;
     }
 
     private void OnDisable()
@@ -35,8 +33,6 @@ public class Player : MonoBehaviour
         inputSystem.Disable();
         inputSystem.Player1.Movement.performed -= MovementPerformed;
         inputSystem.Player1.Movement.canceled -= MovementCancelled;
-        inputSystem.Player2.Movement.performed -= MovementPerformed;
-        inputSystem.Player2.Movement.canceled -= MovementCancelled;
     }
 
     private void FixedUpdate()
