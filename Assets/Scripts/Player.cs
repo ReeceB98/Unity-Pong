@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
     private InputSystem inputSystem = null;
-    [SerializeField] private Rigidbody2D rb = null;
+    private Rigidbody2D rb = null;
     private Vector2 direction = Vector2.zero;
     [SerializeField] private float speed = 0.0f;
-    [SerializeField] private float yBarriers = 0.0f;
+    private float yBarriers = 0.0f;
     private float xPos = 0.0f;
 
     private void Awake()
@@ -38,7 +36,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         PlayerMovement();
-        SetPlayer1Barriers();
+        SetPlayerBarriers();
     }
 
     private void MovementPerformed(InputAction.CallbackContext value)
@@ -56,7 +54,7 @@ public class Player : MonoBehaviour
         rb.velocity = speed * Time.deltaTime * direction;
     }
 
-    private void SetPlayer1Barriers()
+    private void SetPlayerBarriers()
     {
         // Stops player 1 paddle going out of the top of level
         if (transform.position.y > yBarriers)
