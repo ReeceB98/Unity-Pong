@@ -42,7 +42,7 @@ public class Ball : MonoBehaviour
 
         float xDirection, yDirection;
 
-        if (transform.position.x > 0)
+        if (transform.position.x > 0.0f)
         {
             xDirection = -1.0f;
         }
@@ -67,6 +67,18 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2")
         {
             Bounce(collision.transform);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (transform.position.x > 0.0f)
+        {
+            ResetBall();
+        }
+        else
+        {
+            ResetBall();
         }
     }
 }
