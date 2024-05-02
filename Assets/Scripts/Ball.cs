@@ -32,4 +32,41 @@ public class Ball : MonoBehaviour
         hitCounter = 0;
         Invoke("StartBall", 2.0f);
     }
+
+    private void Bounce(Transform myObject)
+    {
+        hitCounter++;
+
+        Vector2 ballPosition = transform.position;
+        Vector2 playerPosition = myObject.position;
+
+        float xDirection, yDirection;
+
+        if (transform.position.x > 0)
+        {
+            xDirection = -1.0f;
+        }
+        else
+        {
+            xDirection = 1.0f;
+        }
+
+        // Finds the position of where the ball hits the paddle.
+        yDirection = (ballPosition.y - playerPosition.y) / myObject.GetComponent<Collider2D>().bounds.size.y;
+        
+        if (yDirection == 0.0f)
+        {
+            yDirection = 0.25f;
+        }
+
+        rb.velocity = new Vector2(xDirection, yDirection) * (initialSpeed + (speedIncrease * hitCounter));
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2")
+        {
+            Bounce(collision.transform);
+        }
+    }
 }

@@ -15,7 +15,7 @@ public class Player2 : MonoBehaviour
         inputSystem = new InputSystem();
         rb = GetComponent<Rigidbody2D>();
         yBarriers = 3.5f;
-        speed = 300.0f;
+        speed = 600.0f;
         xPos = 7.0f;
     }
 
