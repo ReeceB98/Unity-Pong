@@ -70,7 +70,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2")
+        if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2" || collision.gameObject.name == "ComputerPlayer")
         {
             Bounce(collision.transform);
         }
