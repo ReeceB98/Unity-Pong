@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +8,6 @@ public class MenuManager : MonoBehaviour
 
     public void MoveToPlayerVsPlayerScene()
     {
-        Debug.Log("Scene has moved to Player Vs Player.");
         SceneManager.LoadScene(playerVsPlayer);
     }
 
@@ -22,5 +19,10 @@ public class MenuManager : MonoBehaviour
     public void ReturnToMenu()
     {
         SceneManager.LoadScene(mainMenu);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
