@@ -36,6 +36,11 @@ public class Ball : MonoBehaviour
         Invoke("StartBall", 2.0f);
     }
 
+    public void StopBall()
+    {
+        rb.velocity = new Vector2(0.0f, 0.0f);
+    }
+
     private void Bounce(Transform myObject)
     {
         hitCounter++;

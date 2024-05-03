@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
 
     private int player1Score = 0;
     private int player2Score = 0;
+    private int winningScore = 7;
 
     private void Start()
     {
@@ -30,12 +31,12 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        if (player1Score == 7)
+        if (player1Score == winningScore)
         {
             gameManager.DisplayPlayer1Wins();
         }
 
-        if (player2Score == 7)
+        if (player2Score == winningScore)
         {
             gameManager.DisplayPlayer2Wins();
         }
