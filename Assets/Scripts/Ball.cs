@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    private ScoreManager scoreManager = null;
+
     [SerializeField] private float initialSpeed = 0.0f;
     [SerializeField] private float speedIncrease = 0.25f;
     private int hitCounter = 0;
@@ -11,6 +13,7 @@ public class Ball : MonoBehaviour
 
     private void Start()
     {
+        scoreManager = FindObjectOfType<ScoreManager>();
         rb = GetComponent<Rigidbody2D>();
         Invoke("StartBall", 2.0f);
     }
@@ -74,10 +77,12 @@ public class Ball : MonoBehaviour
     {
         if (transform.position.x > 0.0f)
         {
+            scoreManager.UpdatePlayer1Score();
             ResetBall();
         }
         else
         {
+            scoreManager.UpdatePlayer2Score();
             ResetBall();
         }
     }
