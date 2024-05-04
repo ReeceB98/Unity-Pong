@@ -11,6 +11,11 @@ public class Ball : MonoBehaviour
     private int hitCounter = 0;
     private Rigidbody2D rb;
 
+    private void Awake()
+    {
+        //Invoke("StartBallLeft", 2.0f);
+    }
+
     private void Start()
     {
         scoreManager = FindObjectOfType<ScoreManager>();

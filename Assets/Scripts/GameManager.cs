@@ -15,9 +15,12 @@ public class GameManager : MonoBehaviour
 
     private bool pausingGame = false;
 
+    [SerializeField] private GameObject pause;
+
     private void Awake()
     {
         inputSystem = new InputSystem();
+ 
     }
 
     private void Start()
@@ -52,17 +55,27 @@ public class GameManager : MonoBehaviour
 
     private void PauseGame(InputAction.CallbackContext value)
     {
-        // Pauses the game.
-        if (value.started && !pausingGame)
+        if (this != null)
         {
-            Time.timeScale = 0.0f;
-            pausingGame = true;
+            // Pauses the game.
+            if (value.started && !pausingGame)
+            {
+                Time.timeScale = 0.0f;
+                pause.SetActive(true);
+                pausingGame = true;
+            }
+            // Unpauses the game.
+            else if (value.started && pausingGame)
+            {
+                Time.timeScale = 1.0f;
+                pause.SetActive(false);
+                pausingGame = false;
+            }
         }
-        // Unpauses the game.
-        else if (value.started && pausingGame)
-        {
-            Time.timeScale = 1.0f;
-            pausingGame = false;
-        }
+    }
+
+    public void SetTimeScale(float value)
+    {
+        Time.timeScale = value;
     }
 }

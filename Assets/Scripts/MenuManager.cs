@@ -3,9 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    private GameManager gameManager = null;
+
     private string playerVsPlayer = "PlayerVsPlayer";
     private string playerVsComputer = "PlayerVsComputer";
     private string mainMenu = "MainMenu";
+
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
 
     public void MoveToPlayerVsPlayerScene()
     {
@@ -20,11 +27,13 @@ public class MenuManager : MonoBehaviour
     public void ResetScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1.0f;
     }
 
     public void ReturnToMenu()
     {
         SceneManager.LoadScene(mainMenu);
+        gameManager.SetTimeScale(1.0f);
     }
 
     public void ExitGame()
