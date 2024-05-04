@@ -70,4 +70,19 @@ public class Player2 : MonoBehaviour
             transform.position = new Vector2(xPos, -yBarriers);
         }
     }
+
+    public void ResetPlayer2Position()
+    {
+        transform.position = new Vector2(xPos, 0.0f);
+    }
+
+    public float SetSpeed(float setSpeed)
+    {
+        return speed = setSpeed;
+    }
+
+    public Rigidbody2D SetRigidbody()
+    {
+        return rb;
+    }
 }

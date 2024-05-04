@@ -3,6 +3,8 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private ScoreManager scoreManager = null;
+    private Player player1 = null;
+    private Player2 player2 = null;
 
     [SerializeField] private float initialSpeed = 0.0f;
     [SerializeField] private float speedIncrease = 0.25f;
@@ -12,6 +14,8 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         scoreManager = FindObjectOfType<ScoreManager>();
+        player1 = FindObjectOfType<Player>();
+        player2 = FindObjectOfType<Player2>();
         rb = GetComponent<Rigidbody2D>();
         Invoke("StartBall", 2.0f);
     }
@@ -82,11 +86,15 @@ public class Ball : MonoBehaviour
         {
             scoreManager.UpdatePlayer1Score();
             ResetBall();
+            player1.ResetPlayer1Position();
+            player2.ResetPlayer2Position();
         }
         else
         {
             scoreManager.UpdatePlayer2Score();
             ResetBall();
+            player2.ResetPlayer2Position();
+            player1.ResetPlayer1Position();
         }
     }
 }

@@ -1,15 +1,14 @@
 using UnityEngine;
 
-public class ComputerPlayer : MonoBehaviour
+public class ComputerPlayer : Player2
 {
-    private Rigidbody2D rb = null;
     private Vector2 computerMovement = Vector2.zero;
-    [SerializeField] private float speed = 0.0f;
+    [SerializeField] private float computerSpeed = 0.0f;
     [SerializeField] private GameObject ball;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        computerSpeed = SetSpeed(300.0f);
     }
 
     private void ComputerControl()
@@ -40,6 +39,6 @@ public class ComputerPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = computerMovement * Time.fixedDeltaTime * speed;
+        SetRigidbody().velocity = computerMovement * Time.fixedDeltaTime * computerSpeed;
     }
 }
