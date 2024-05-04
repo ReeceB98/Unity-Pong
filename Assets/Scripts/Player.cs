@@ -70,4 +70,9 @@ public class Player : MonoBehaviour
             transform.position = new Vector2(-xPos, -yBarriers);
         }
     }
+
+    public void ResetPlayer1Position()
+    {
+        transform.position = new Vector2(-xPos, 0.0f);
+    }
 }
