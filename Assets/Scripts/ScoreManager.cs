@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     private GameManager gameManager = null;
+    private Ball ball = null;
 
     [SerializeField] private Text player1ScoreText = null;    
     [SerializeField] private Text player2ScoreText = null;
@@ -15,6 +16,7 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        ball = FindObjectOfType<Ball>();
     }
 
     public void UpdatePlayer1Score()
@@ -40,5 +42,15 @@ public class ScoreManager : MonoBehaviour
         {
             gameManager.DisplayPlayer2Wins();
         }
+
+       /* if (gameObject.name == "Player1Wall")
+        {
+            ball.StartBall(-1.0f, 0.0f);
+        }
+
+        if (gameObject.name == "Player2Wall")
+        {
+            ball.StartBall(1.0f, 0.0f);
+        }*/
     }
 }
