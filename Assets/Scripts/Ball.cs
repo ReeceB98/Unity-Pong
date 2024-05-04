@@ -17,7 +17,7 @@ public class Ball : MonoBehaviour
         player1 = FindObjectOfType<Player>();
         player2 = FindObjectOfType<Player2>();
         rb = GetComponent<Rigidbody2D>();
-        Invoke("StartBall", 2.0f);
+        Invoke("StartBallLeft", 2.0f);
     }
 
     private void FixedUpdate()
@@ -25,17 +25,30 @@ public class Ball : MonoBehaviour
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, initialSpeed + (speedIncrease * hitCounter));
     }
 
-    private void StartBall()
+    private void StartBallLeft()
     {
         rb.velocity = new Vector2(-1.0f, 0.0f) * (initialSpeed + speedIncrease * hitCounter);
     }
+    public void StartBallRight()
+    {
+        rb.velocity = new Vector2(1.0f, 0.0f) * (initialSpeed + speedIncrease * hitCounter);
+    }
 
-    private void ResetBall()
+    private void ResetBall(Collider2D other)
     {
         rb.velocity = new Vector2(0.0f, 0.0f);
         transform.position = new Vector2(0.0f, 0.0f);
         hitCounter = 0;
-        Invoke("StartBall", 2.0f);
+
+        if (other.gameObject.name == "Player1Wall")
+        {
+            Invoke("StartBallLeft", 2.0f);
+        }
+
+        if (other.gameObject.name == "Player2Wall")
+        {
+            Invoke("StartBallRight", 2.0f);
+        }
     }
 
     public void StopBall()
@@ -85,14 +98,14 @@ public class Ball : MonoBehaviour
         if (transform.position.x > 0.0f)
         {
             scoreManager.UpdatePlayer1Score();
-            ResetBall();
+            ResetBall(other);
             player1.ResetPlayer1Position();
             player2.ResetPlayer2Position();
         }
         else
         {
             scoreManager.UpdatePlayer2Score();
-            ResetBall();
+            ResetBall(other);
             player2.ResetPlayer2Position();
             player1.ResetPlayer1Position();
         }
