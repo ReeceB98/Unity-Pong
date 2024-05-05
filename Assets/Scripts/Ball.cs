@@ -3,6 +3,8 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private ScoreManager scoreManager = null;
+    private AudioManager audioManager = null;
+
     private Player player1 = null;
     private Player2 player2 = null;
 
@@ -13,7 +15,7 @@ public class Ball : MonoBehaviour
 
     private void Awake()
     {
-        //Invoke("StartBallLeft", 2.0f);
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void Start()
@@ -96,12 +98,18 @@ public class Ball : MonoBehaviour
         {
             Bounce(collision.transform);
         }
+
+        if (gameObject.name == "Ball")
+        {
+            audioManager.PlayAudioBlip();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (transform.position.x > 0.0f)
         {
+            audioManager.PlayAudioGoal();
             scoreManager.UpdatePlayer1Score();
             ResetBall(other);
             player1.ResetPlayer1Position();
@@ -109,6 +117,7 @@ public class Ball : MonoBehaviour
         }
         else
         {
+            audioManager.PlayAudioGoal();
             scoreManager.UpdatePlayer2Score();
             ResetBall(other);
             player2.ResetPlayer2Position();

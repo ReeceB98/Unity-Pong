@@ -562,28 +562,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52b50ce55fe5404387676bdd85afe82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &280703768 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3814133798107963574, guid: 8b33fa73c0b4b864196d86e6c0de5515, type: 3}
-  m_PrefabInstance: {fileID: 625573019958491873}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &305981752 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4140097635019928158, guid: 8b33fa73c0b4b864196d86e6c0de5515, type: 3}
-  m_PrefabInstance: {fileID: 625573019958491873}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &396381831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,17 +1107,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840156736}
   m_CullTransparentMesh: 1
---- !u!114 &1091772409 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5902060356836160698, guid: 8b33fa73c0b4b864196d86e6c0de5515, type: 3}
-  m_PrefabInstance: {fileID: 625573019958491873}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1121938621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1585,12 +1552,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1WinsText: {fileID: 1591210977}
   player2WinsText: {fileID: 1905595619}
-  pauseText: {fileID: 305981752}
   tryAgainButton: {fileID: 840156738}
   menuButton: {fileID: 2087554369}
-  pauseMenuButton: {fileID: 280703768}
-  resetButton: {fileID: 1091772409}
-  pausingGame: 0
   pause: {fileID: 1577563531}
 --- !u!4 &1434465627
 Transform:
