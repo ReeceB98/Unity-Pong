@@ -11,10 +11,6 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        audioSource.clip = uiSelector;
-        audioSource.volume = 0.25f;
-        audioSource.Play();
-
         if (instance == null)
         {
             instance = this;
@@ -35,6 +31,11 @@ public class AudioManager : MonoBehaviour
     public void PlayAudioGoal()
     {
         audioSource.clip = goal;
+        audioSource.Play();
+    }
+    public void PlayAudioUISelector()
+    {
+        audioSource.clip = uiSelector;
         audioSource.Play();
     }
 }

@@ -672,6 +672,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1303403003225480929, guid: de9ccf61ce31e7745abc6986425badcf, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1770598549244600945, guid: de9ccf61ce31e7745abc6986425badcf, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -719,7 +723,7 @@ PrefabInstance:
     - target: {fileID: 5034077674994419801, guid: de9ccf61ce31e7745abc6986425badcf, type: 3}
       propertyPath: uiSelector
       value: 
-      objectReference: {fileID: 8300000, guid: 33936d7cf65fc94478cb766cf58ac020, type: 3}
+      objectReference: {fileID: 8300000, guid: 1fed9226d72f63546ba705a856b40805, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

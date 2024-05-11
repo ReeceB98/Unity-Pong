@@ -23,6 +23,7 @@ public class MenuManager : MonoBehaviour
 
     public void MoveToPlayerVsComputerScene()
     {
+        audioManager.PlayAudioUISelector();
         SceneManager.LoadScene(playerVsComputer);
     }
 
