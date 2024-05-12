@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour
 
     public void MoveToPlayerVsPlayerScene()
     {
+        audioManager.PlayAudioUISelector();
         SceneManager.LoadScene(playerVsPlayer);
     }
 
@@ -29,18 +30,21 @@ public class MenuManager : MonoBehaviour
 
     public void ResetScene()
     {
+        audioManager.PlayAudioUISelector();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1.0f;
     }
 
     public void ReturnToMenu()
     {
+        audioManager.PlayAudioUISelector();
         SceneManager.LoadScene(mainMenu);
         gameManager.SetTimeScale(1.0f);
     }
 
     public void ExitGame()
     {
+        audioManager.PlayAudioUISelector();
         Application.Quit();
     }
 }
